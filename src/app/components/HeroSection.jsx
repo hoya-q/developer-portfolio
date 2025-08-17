@@ -1,0 +1,129 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Github, Mail } from "lucide-react";
+
+const titles = ["Frontend Developer", "React Developer", "Backend Developer"];
+
+export default function HeroSection() {
+  const [currentTitle, setCurrentTitle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 pt-20"
+    >
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full opacity-5 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://readdy.ai/api/search-image?query=modern%20minimalist%20office%20workspace%20with%20laptop%20and%20plants%2C%20clean%20dark%20desk%20setup%2C%20moody%20lighting%2C%20professional%20development%20environment%2C%20dark%20background&width=1920&height=1080&seq=hero002&orientation=landscape')`,
+        }}
+      ></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                안녕하세요,
+                <br />
+                <span className="text-blue-400">지정호</span>입니다.
+              </h1>
+
+              <div className="h-16 flex items-center">
+                <h2 className="text-2xl md:text-3xl text-gray-300 font-medium">
+                  Creative{" "}
+                  <span className="inline-block transition-all duration-500 text-blue-400 font-bold" key={currentTitle}>
+                    {titles[currentTitle]}
+                  </span>
+                </h2>
+              </div>
+            </div>
+
+            <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
+              작은 창피함을 두려워하지 않고, 이를 성장의 발판으로 삼으며 끊임없이 배우고 발전하는 개발자가 되고자
+              합니다.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="#projects"
+                className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer"
+              >
+                프로젝트 보기
+                <ArrowRight size={20} className="ml-2" />
+              </Link>
+
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center px-8 py-3 border-2 border-blue-400 text-blue-400 font-medium rounded-lg hover:bg-blue-400 hover:text-white transition-colors whitespace-nowrap cursor-pointer"
+              >
+                연락하기
+                <Mail size={20} className="ml-2" />
+              </Link>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center space-x-6 pt-4">
+              <Link
+                href="https://github.com/hoya-q"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <Github size={24} />
+              </Link>
+              <Link
+                href="https://velog.io/@kiik52/posts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <BookOpen size={24} />
+              </Link>
+              <Link
+                href="mailto:contact@example.com"
+                className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <Mail size={24} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+            <div className="relative z-10">
+              <img
+                src="/images/momnect.png"
+                alt="개발자 프로필"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover object-top border border-gray-700"
+              />
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-4 -right-4 w-72 h-72 bg-blue-600/10 rounded-full opacity-50 -z-10"></div>
+            <div className="absolute -bottom-4 -left-4 w-48 h-48 bg-purple-600/10 rounded-full opacity-50 -z-10"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-gray-500 rounded-full mt-2"></div>
+        </div>
+      </div>
+    </section>
+  );
+}
