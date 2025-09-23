@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Github, Mail } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Image from "next/image";
 
 const titles = ["Frontend Developer", "Backend Developer", "Fullstack Developer"];
 
@@ -118,12 +119,15 @@ export default function HeroSection() {
           {/* Right Image */}
           <div className="relative" data-aos="fade-left" data-aos-delay="400">
             <div className="relative z-10">
-              <img
-                src="/images/hoya-main.jpg"
+              <Image
+                src="/images/heroSection-main.jpg"
                 alt="개발자 프로필"
+                width={400}
+                height={500}
                 className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover object-top border border-gray-700"
                 data-aos="zoom-in"
                 data-aos-delay="600"
+                priority
               />
             </div>
 
