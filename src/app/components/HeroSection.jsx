@@ -3,13 +3,23 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Github, Mail } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const titles = ["Frontend Developer", "React Developer", "Backend Developer"];
+const titles = ["Frontend Developer", "Backend Developer", "Fullstack Developer"];
 
 export default function HeroSection() {
   const [currentTitle, setCurrentTitle] = useState(0);
 
   useEffect(() => {
+    // AOS 초기화
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      offset: 100,
+    });
+
     const interval = setInterval(() => {
       setCurrentTitle((prev) => (prev + 1) % titles.length);
     }, 3000);
@@ -22,26 +32,22 @@ export default function HeroSection() {
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 pt-20"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 w-full h-full opacity-5 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://readdy.ai/api/search-image?query=modern%20minimalist%20office%20workspace%20with%20laptop%20and%20plants%2C%20clean%20dark%20desk%20setup%2C%20moody%20lighting%2C%20professional%20development%20environment%2C%20dark%20background&width=1920&height=1080&seq=hero002&orientation=landscape')`,
-        }}
-      ></div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8" data-aos="fade-right" data-aos-delay="200">
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 안녕하세요,
                 <br />
                 <span className="text-blue-400">지정호</span>입니다.
               </h1>
 
-              <div className="h-16 flex items-center">
+              <div className="h-16 flex items-center" data-aos="fade-up" data-aos-delay="500">
                 <h2 className="text-2xl md:text-3xl text-gray-300 font-medium">
                   Creative{" "}
                   <span className="inline-block transition-all duration-500 text-blue-400 font-bold" key={currentTitle}>
@@ -51,19 +57,27 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-lg leading-relaxed" data-aos="fade-up" data-aos-delay="700">
               작은 창피함을 두려워하지 않고, 이를 성장의 발판으로 삼으며 끊임없이 배우고 발전하는 개발자가 되고자
               합니다.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="#projects"
+            <div className="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="900">
+              <button
+                onClick={() => {
+                  const projectsSection = document.getElementById("projects");
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }}
                 className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer"
               >
                 프로젝트 보기
                 <ArrowRight size={20} className="ml-2" />
-              </Link>
+              </button>
 
               <Link
                 href="#contact"
@@ -75,7 +89,7 @@ export default function HeroSection() {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center space-x-6 pt-4">
+            <div className="flex items-center space-x-6 pt-4" data-aos="fade-up" data-aos-delay="1100">
               <Link
                 href="https://github.com/hoya-q"
                 target="_blank"
@@ -102,24 +116,38 @@ export default function HeroSection() {
           </div>
 
           {/* Right Image */}
-          <div className="relative">
+          <div className="relative" data-aos="fade-left" data-aos-delay="400">
             <div className="relative z-10">
               <img
-                src="/images/momnect.png"
+                src="/images/hoya-main.jpg"
                 alt="개발자 프로필"
                 className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover object-top border border-gray-700"
+                data-aos="zoom-in"
+                data-aos-delay="600"
               />
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute -top-4 -right-4 w-72 h-72 bg-blue-600/10 rounded-full opacity-50 -z-10"></div>
-            <div className="absolute -bottom-4 -left-4 w-48 h-48 bg-purple-600/10 rounded-full opacity-50 -z-10"></div>
+            <div
+              className="absolute -top-4 -right-4 w-72 h-72 bg-blue-600/10 rounded-full opacity-50 -z-10"
+              data-aos="fade-in"
+              data-aos-delay="800"
+            ></div>
+            <div
+              className="absolute -bottom-4 -left-4 w-48 h-48 bg-purple-600/10 rounded-full opacity-50 -z-10"
+              data-aos="fade-in"
+              data-aos-delay="1000"
+            ></div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        data-aos="fade-up"
+        data-aos-delay="1200"
+      >
         <div className="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-gray-500 rounded-full mt-2"></div>
         </div>
