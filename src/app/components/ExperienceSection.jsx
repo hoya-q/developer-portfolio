@@ -1,6 +1,23 @@
 "use client";
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function ExperienceSection() {
+  useEffect(() => {
+    // AOS 초기화
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-in-out",
+      offset: 100,
+      delay: 0,
+    });
+
+    // AOS 새로고침
+    AOS.refresh();
+  }, []);
   const experiences = [
     {
       company: "Akiaka",
@@ -44,12 +61,14 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-900">
+    <section className="py-20 bg-gray-800">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Experience</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+            Experience
+          </h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
             다양한 환경에서의 개발 경험을 통해 성장해온 여정입니다.
           </p>
         </div>
@@ -61,14 +80,27 @@ export default function ExperienceSection() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-700 hidden md:block"></div>
 
             {experiences.map((experience, index) => (
-              <div key={index} className="relative flex items-start mb-12 last:mb-0">
+              <div
+                key={index}
+                className="relative flex items-start mb-12 last:mb-0"
+                data-aos="fade-up"
+                data-aos-delay={800 + index * 200}
+              >
                 {/* Timeline Dot */}
-                <div className="hidden md:flex w-16 h-16 bg-blue-600 rounded-full items-center justify-center relative z-10 mr-8 flex-shrink-0">
+                <div
+                  className="hidden md:flex w-16 h-16 bg-blue-600 rounded-full items-center justify-center relative z-10 mr-8 flex-shrink-0"
+                  data-aos="zoom-in"
+                  data-aos-delay={1000 + index * 200}
+                >
                   <i className="ri-briefcase-line text-white text-xl"></i>
                 </div>
 
                 {/* Experience Card */}
-                <div className="bg-gray-800 border border-gray-700 rounded-2xl p-8 w-full hover:shadow-2xl hover:border-blue-500/50 transition-all duration-300">
+                <div
+                  className="bg-gray-800 border border-gray-700 rounded-2xl p-8 w-full hover:shadow-2xl hover:border-blue-500/50 transition-all duration-300"
+                  data-aos="fade-left"
+                  data-aos-delay={1200 + index * 200}
+                >
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
                     <div className="mb-4 lg:mb-0">
                       <h3 className="text-2xl font-bold text-white mb-2">{experience.position}</h3>
@@ -88,11 +120,16 @@ export default function ExperienceSection() {
                   <p className="text-gray-300 leading-relaxed mb-6 whitespace-break-spaces">{experience.description}</p>
 
                   {/* Achievements */}
-                  <div className="mb-6">
+                  <div className="mb-6" data-aos="fade-up" data-aos-delay={1400 + index * 200}>
                     <h4 className="text-lg font-semibold text-white mb-4">주요 성과</h4>
                     <ul className="space-y-2">
                       {experience.achievements.map((achievement, achievementIndex) => (
-                        <li key={achievementIndex} className="flex items-start">
+                        <li
+                          key={achievementIndex}
+                          className="flex items-start"
+                          data-aos="fade-up"
+                          data-aos-delay={1600 + index * 200 + achievementIndex * 100}
+                        >
                           <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                           <span className="text-gray-300 text-sm leading-relaxed">{achievement}</span>
                         </li>
@@ -103,13 +140,15 @@ export default function ExperienceSection() {
                   {/* Technologies */}
 
                   {experience.technologies ? (
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay={1800 + index * 200}>
                       <h4 className="text-lg font-semibold text-white mb-4">사용 기술</h4>
                       <div className="flex flex-wrap gap-2">
                         {experience.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
                             className="px-3 py-1 bg-blue-600/20 text-blue-300 rounded-full text-sm font-medium"
+                            data-aos="fade-up"
+                            data-aos-delay={2000 + index * 200 + techIndex * 50}
                           >
                             {tech}
                           </span>
