@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Github, Mail } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Image from "next/image";
 
 const titles = ["Frontend Developer", "Backend Developer", "Fullstack Developer"];
@@ -13,14 +11,6 @@ export default function HeroSection() {
   const [currentTitle, setCurrentTitle] = useState(0);
 
   useEffect(() => {
-    // AOS 초기화
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-      offset: 100,
-    });
-
     const interval = setInterval(() => {
       setCurrentTitle((prev) => (prev + 1) % titles.length);
     }, 3000);
@@ -29,9 +19,9 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section
+    <div
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 pt-20"
+      className="w-full min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-gray-900 to-gray-800 pt-20"
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -133,12 +123,12 @@ export default function HeroSection() {
 
             {/* Decorative Elements */}
             <div
-              className="absolute -top-4 -right-4 w-72 h-72 bg-blue-600/10 rounded-full opacity-50 -z-10"
+              className="absolute top-0 right-0 w-72 h-72 bg-blue-600/10 rounded-full opacity-50 -z-10"
               data-aos="fade-in"
               data-aos-delay="800"
             ></div>
             <div
-              className="absolute -bottom-4 -left-4 w-48 h-48 bg-purple-600/10 rounded-full opacity-50 -z-10"
+              className="absolute bottom-0 left-0 w-48 h-48 bg-purple-600/10 rounded-full opacity-50 -z-10"
               data-aos="fade-in"
               data-aos-delay="1000"
             ></div>
@@ -156,6 +146,6 @@ export default function HeroSection() {
           <div className="w-1 h-3 bg-gray-500 rounded-full mt-2"></div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
