@@ -14,7 +14,7 @@ import ContactSection from "@/app/components/ContactSection";
 export default function Home() {
   return (
     <AOSProvider>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white overflow-hidden">
         <Header />
         <HeroSection />
         <AboutSection />

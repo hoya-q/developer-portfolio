@@ -1,21 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 export default function AboutSection() {
-  useEffect(() => {
-    // AOS 초기화 (이미 HeroSection에서 초기화되었지만 안전을 위해)
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-      offset: 100,
-    });
-  }, []);
-
   return (
     <section id="about" className="py-20 bg-gray-800">
       <div className="container mx-auto px-6">
@@ -42,7 +29,7 @@ export default function AboutSection() {
 
             {/* Stats Cards */}
             <div
-              className="absolute -bottom-6 -right-6 bg-gray-900 border border-gray-700 rounded-xl p-6 shadow-lg"
+              className="absolute bottom-4 right-4 bg-gray-900 border border-gray-700 rounded-xl p-6 shadow-lg"
               data-aos="fade-up"
               data-aos-delay="1000"
             >
