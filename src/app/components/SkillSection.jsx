@@ -1,6 +1,7 @@
 "use client";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { getSkillInfo } from "@/lib/skills";
 
 export default function SkillSection() {
   const skillsData = [
@@ -36,49 +37,6 @@ export default function SkillSection() {
       familiar: ["K8s", "Linux", "Ubuntu", "ArgoCD", "AWS"],
     },
   ];
-
-  const getSkillInfo = (skillName) => {
-    const skillMap = {
-      // 프로그래밍 언어 (파란색 계열)
-      JavaScript: { color: "bg-blue-300", iconPath: "/icon/JavaScript.svg" },
-      TypeScript: { color: "bg-blue-300", iconPath: "/icon/TypeScript.svg" },
-      Java: { color: "bg-blue-300", iconPath: "/icon/Java-Dark.svg" },
-      PHP: { color: "bg-blue-300", iconPath: "/icon/PHP-Dark.svg" },
-
-      // 백엔드 프레임워크/런타임 (녹색 계열)
-      "Node.js": { color: "bg-green-300", iconPath: "/icon/NodeJS-Dark.svg" },
-      SpringBoot: { color: "bg-green-300", iconPath: "/icon/Spring-Dark.svg" },
-      JPA: { color: "bg-green-300", iconPath: "/icon/Hibernate-Dark.svg" },
-      Mybatis: { color: "bg-green-300", iconPath: "/icon/Mybatis.png" },
-      JSP: { color: "bg-green-300", iconPath: "/icon/JSP.png" },
-
-      // 프론트엔드 마크업/스타일링 (보라색 계열)
-      HTML5: { color: "bg-purple-300", iconPath: "/icon/HTML.svg" },
-      Sass: { color: "bg-purple-300", iconPath: "/icon/Sass.svg" },
-      Tailwind: { color: "bg-purple-300", iconPath: "/icon/TailwindCSS-Dark.svg" },
-
-      // 프론트엔드 프레임워크/라이브러리 (분홍색 계열)
-      React: { color: "bg-pink-300", iconPath: "/icon/React-Dark.svg" },
-      "Next.js": { color: "bg-pink-300", iconPath: "/icon/NextJS-Dark.svg" },
-      jQuery: { color: "bg-pink-300", iconPath: "/icon/JQuery.svg" },
-
-      // 데이터베이스 (주황색 계열)
-      MySQL: { color: "bg-orange-300", iconPath: "/icon/MySQL-Dark.svg" },
-      MongoDB: { color: "bg-orange-300", iconPath: "/icon/MongoDB.svg" },
-
-      // DevOps/인프라 (회색 계열)
-      Git: { color: "bg-gray-300", iconPath: "/icon/Git.svg" },
-      Docker: { color: "bg-gray-300", iconPath: "/icon/Docker.svg" },
-      Jenkins: { color: "bg-gray-300", iconPath: "/icon/Jenkins-Dark.svg" },
-      K8s: { color: "bg-gray-300", iconPath: "/icon/Kubernetes.svg" },
-      Linux: { color: "bg-gray-300", iconPath: "/icon/Linux-Dark.svg" },
-      Ubuntu: { color: "bg-gray-300", iconPath: "/icon/Ubuntu.png" },
-      ArgoCD: { color: "bg-gray-300", iconPath: "/icon/ArgoCD.png" },
-      AWS: { color: "bg-gray-300", iconPath: "/icon/AWS-Dark.svg" },
-    };
-
-    return skillMap[skillName] || { color: "bg-gray-300", iconPath: "/icon/Code.svg" };
-  };
 
   return (
     <TooltipProvider>
