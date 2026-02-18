@@ -127,3 +127,86 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Swiper 네비게이션 화살표 크기 조정 */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 24px !important;
+  height: 24px !important;
+  margin-top: -16px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.swiper-button-next {
+  right: 8px !important;
+}
+
+.swiper-button-prev {
+  left: 8px !important;
+}
+
+/* Swiper 페이지네이션 점 크기 조정 */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #3b82f6 !important;
+}
+
+/* 커스텀 스크롤바 스타일 */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 #1f2937;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* DialogContent 전용 스크롤바 */
+.dialog-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #374151 #111827;
+}
+
+.dialog-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 3px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
